@@ -1,5 +1,11 @@
 import { uniqueValue } from "../utils/utils";
 
+const reset = (state, payload) => ({
+  history: { ...state.history },
+  winner: [...state.winner],
+  message: payload,
+});
+
 export const cardReducer = (state, { type, payload }) => {
   switch (type) {
     case "player1newCard":
@@ -22,8 +28,10 @@ export const cardReducer = (state, { type, payload }) => {
           player2Hist: [...state.history.player2Hist, newValue2],
         },
       };
+    case "winner":
+      return { ...state, winner: [...state.winner, payload] };
     case "reset":
-      return { history: { ...state.history }, message: payload };
+      return reset(state, payload);
     default:
       return state;
   }
