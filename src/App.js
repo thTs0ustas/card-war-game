@@ -1,6 +1,6 @@
-import './App.css';
-import {DeckComponent} from "./compopnents/deck";
+import "./App.css";
+import { DeckComponent } from "./compopnents/deck";
 
-const App = () => <div><DeckComponent/></div>
+const App = () => <DeckComponent />;
 
 export default App;
