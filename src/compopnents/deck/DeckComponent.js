@@ -1,8 +1,6 @@
 import * as React from "react";
 import { CardComponent } from "../Cards";
 import { statusFn } from "../../utils/utils";
-// @ts-ignore
-import { useCard } from "./useCard";
 
 const actionTypes = {
   playerOneCard: "player1newCard",
@@ -10,10 +8,10 @@ const actionTypes = {
   reset: "reset",
 };
 
-export const DeckComponent = () => {
-  const [state, dispatch] = useCard();
+export const DeckComponent = ({ value }) => {
+  const [state, dispatch] = value;
   const { player1card, player2card, winner, message } = state;
-  console.log(player1card);
+
   const status = statusFn(message, player1card, player2card, winner);
 
   return (

@@ -20,7 +20,7 @@ export const ContextCard = ({ reducer = cardReducer, children }) => {
 
 export const useCard = () => {
   const context = useContext(CardContext);
-
+  if (!context) throw new Error("The component is out of the context provider");
   console.log(context);
 
   return context;

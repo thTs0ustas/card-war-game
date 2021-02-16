@@ -1,11 +1,8 @@
-// @ts-ignore
-import { useCard } from "../Deck/useCard";
 import React from "react";
 import { winners } from "../../utils/utils";
 import { POINT_SYSTEM } from "../../misc/staticValues";
 
-export const useScore = () => {
-  const [state, dispatch] = useCard();
+export const useScore = ({ state, dispatch }) => {
   const [score, setScore] = React.useState({ Player1: 0, Player2: 0 });
 
   const { player1card, player2card } = state;

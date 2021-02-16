@@ -1,8 +1,9 @@
 import React from "react";
 import { useScore } from "./useScore";
 
-export const Score = () => {
-  const score = useScore();
+export const Score = ({ value }) => {
+  const [state, dispatch] = value;
+  const score = useScore({ state, dispatch });
   return (
     <table>
       <thead>
