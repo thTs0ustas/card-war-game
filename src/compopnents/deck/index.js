@@ -1,1 +1,2 @@
-export {DeckComponent} from './DeckComponent'
+// @ts-ignore
+export { DeckComponent } from "./DeckComponent";

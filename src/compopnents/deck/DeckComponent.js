@@ -1,11 +1,8 @@
 import * as React from "react";
 import { CardComponent } from "../Cards";
-import { useCard } from "./useCard";
 import { statusFn } from "../../utils/utils";
-
-const messages = {
-  pregame: "Turn your Card",
-};
+// @ts-ignore
+import { useCard } from "./useCard";
 
 const actionTypes = {
   playerOneCard: "player1newCard",
@@ -14,11 +11,7 @@ const actionTypes = {
 };
 
 export const DeckComponent = () => {
-  const [state, dispatch] = useCard({
-    message: messages.pregame,
-    history: { player1Hist: [], player2Hist: [] },
-    winner: [],
-  });
+  const [state, dispatch] = useCard();
   const { player1card, player2card, winner, message } = state;
   console.log(player1card);
   const status = statusFn(message, player1card, player2card, winner);

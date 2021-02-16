@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2016",
+    "rootDir": "src",
+    "target": "ES6",
     "module": "esnext",
-    "lib": [
-      "es2019",
-      "dom"
-    ],
+    "lib": ["es2019", "dom"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -19,7 +17,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

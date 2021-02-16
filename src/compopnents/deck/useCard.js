@@ -1,32 +1,27 @@
 import * as React from "react";
 import { cardReducer } from "../../model/cardReducer";
-import { winners } from "../../utils/utils";
-import { POINT_SYSTEM } from "../../misc/staticValues";
+import { createContext, useContext } from "react";
 
-export const useCard = ({
-  reducer = cardReducer,
-  message = "Turn the Card",
-  ...args
-} = {}) => {
+const CardContext = createContext(undefined);
+
+export const ContextCard = ({ reducer = cardReducer, children }) => {
   const [state, dispatch] = React.useReducer(
     reducer,
-    { message, ...args },
+    {
+      message: "Press to Start",
+      history: { player1Hist: [], player2Hist: [] },
+      winner: [],
+    },
     (val) => val
   );
-  const winnerFn = React.useMemo(
-    () =>
-      winners(POINT_SYSTEM, state.player1card?.value, state.player2card?.value),
-    [state.player1card?.value, state.player2card?.value]
-  );
+  let value = [state, dispatch];
+  return <CardContext.Provider value={value}>{children}</CardContext.Provider>;
+};
 
-  React.useEffect(() => {
-    if (state.player1card && state.player2card) {
-      dispatch({
-        type: "winner",
-        payload: winnerFn,
-      });
-    }
-  }, [dispatch, state.player1card, state.player2card, winnerFn]);
+export const useCard = () => {
+  const context = useContext(CardContext);
 
-  return [state, dispatch];
+  console.log(context);
+
+  return context;
 };
