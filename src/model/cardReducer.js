@@ -7,25 +7,24 @@ const reset = (state, payload) => ({
 });
 
 export const cardReducer = (state, { type, payload }) => {
+  const newValue = uniqueValue(state.history.player1Hist);
   switch (type) {
     case "player1newCard":
-      const newValue1 = uniqueValue(state.history.player1Hist);
       return {
         ...state,
-        player1card: newValue1,
+        player1card: newValue,
         history: {
           ...state.history,
-          player1Hist: [...state.history.player1Hist, newValue1],
+          player1Hist: [...state.history.player1Hist, newValue],
         },
       };
     case "player2newCard":
-      const newValue2 = uniqueValue(state.history.player2Hist);
       return {
         ...state,
-        player2card: newValue2,
+        player2card: newValue,
         history: {
           ...state.history,
-          player2Hist: [...state.history.player2Hist, newValue2],
+          player2Hist: [...state.history.player2Hist, newValue],
         },
       };
     case "winner":

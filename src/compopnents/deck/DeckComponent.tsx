@@ -8,7 +8,7 @@ const actionTypes = {
   reset: "reset",
 };
 
-export const DeckComponent = ({ value }) => {
+export const DeckComponent: React.FC<String> = ({ value }) => {
   const [state, dispatch] = value;
   const { player1card, player2card, winner, message } = state;
 
